@@ -9,10 +9,19 @@ def twoSum(nums, target):
     if j >= 0:
         return [j,i]
 
+def twoSumAdv(nums, target):
+    hashmap={}
+    for ind,num in enumerate(nums):
+        hashmap[num] = ind
+    for i,num in enumerate(nums):
+        j = hashmap.get(target - num)
+        if j is not None and i!=j:
+            return [i,j]
+
 def test():
-    assert twoSum([2,7,11,15], 9) == [0,1]
-    assert twoSum([3,2,4], 6) == [1,2]
-    assert twoSum([3,3], 6) == [0,1]
+    assert twoSumAdv([2,7,11,15], 9) == [0,1]
+    assert twoSumAdv([3,2,4], 6) == [1,2]
+    assert twoSumAdv([3,3], 6) == [0,1]
 
     print("all tests passed")
 
